@@ -59,14 +59,15 @@ def plot_chains(pdims,posts,obsv,samps):
             #For info on ChainConsumer, see: https://samreay.github.io/ChainConsumer/chain_api.html
             #Using the plot_contour function because it integrates with Matplotlib better.
             cc = pairplot_comp(el,obsv,samps)
-            cc.plotter.plot_contour(axs[i,j],'$x_1$','$x_2',chains=['SBI','Bayesian']);
+            cc.plotter.plot_contour(axs[i,j],'$x_1$','$x_2$',chains=['SBI','Bayesian']);
             #Formatting plots
             axs[i,j].set_xlabel('X1')
             axs[i,j].set_ylabel('X2')
             axs[i,j].set_aspect('equal','box')
-            axs[i,j].plot(theta_true*np.ones(np.shape(np.linspace(-5,5))),np.linspace(-5,5),'black')
-            axs[i,j].plot(np.linspace(-5,5),theta_true*np.ones(np.shape(np.linspace(-5,5))),'black')
+            axs[i,j].plot(theta_true*np.ones(np.shape(np.linspace(low,high))),np.linspace(low,high),'black')
+            axs[i,j].plot(np.linspace(low,high),theta_true*np.ones(np.shape(np.linspace(low,high))),'black')
             axs[i,j].set_title('Iteration ' + str(t) )
+            print('Plotted #' + str(t+1) + '!\n')
 
             j+=1
             t+=1
@@ -84,10 +85,10 @@ def plot_chains(pdims,posts,obsv,samps):
             #Formatting
             axs[i].set_xlabel('X1')
             axs[i].set_ylabel('X2')
-            axs[i].plot(theta_true*np.ones(np.shape(np.linspace(-5,5))),np.linspace(-5,5),'black')
-            axs[i].plot(np.linspace(-5,5),theta_true*np.ones(np.shape(np.linspace(-5,5))),'black')
+            axs[i].plot(theta_true*np.ones(np.shape(np.linspace(low,high))),np.linspace(low,high),'black')
+            axs[i].plot(np.linspace(low,high),theta_true*np.ones(np.shape(np.linspace(low,high))),'black')
             axs[i].set_title('Iteration ' + str(i+1))
-            print('Plotted plot ' + str(i) + '!')
+            print('Plotted plot ' + str(i+1) + '!\n')
             i+=1
         return fig
     if pdims[0] ==1 & pdims[1] ==1:
@@ -99,8 +100,8 @@ def plot_chains(pdims,posts,obsv,samps):
             #Formatting
             axs.set_xlabel('X1')
             axs.set_ylabel('X2')
-            axs.plot(theta_true*np.ones(np.shape(np.linspace(-5,5))),np.linspace(-5,5),'black')
-            axs.plot(np.linspace(-5,5),theta_true*np.ones(np.shape(np.linspace(-5,5))),'black')
+            axs.plot(theta_true*np.ones(np.shape(np.linspace(low,high))),np.linspace(low,high),'black')
+            axs.plot(np.linspace(low,high),theta_true*np.ones(np.shape(np.linspace(low,high))),'black')
             axs.set_title('Iteration ' + str(i+1))
             i+=1
     #The extent of my error handling :^ )
