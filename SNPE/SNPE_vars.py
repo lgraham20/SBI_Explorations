@@ -9,14 +9,14 @@ n_obs = 10 #The number of observations
 num_dim = 2 #Number of variables
 low = -5 #High/low bound on variables
 high = 5
-n_runs = 5 #Number of multi-round inference roudns
-dimens_plot = [1,5] #Must multiply to equal n_runs
+n_runs = 6 #Number of multi-round inference roudns
+dimens_plot = [1,6] #Must multiply to equal n_runs
 sim_count = 200
 if dimens_plot[0]*dimens_plot[1] != n_runs:
     raise ValueError("Dimensions of plot don't multiply to n_runs.")
 ####################################################################
 #Here is the not as great observation that was 
-# messing up SBI earlier.
+# messing up SBI with SNPE & MAF earlier.
 difficult_obs = torch.tensor([[2.1920, 2.3860],
         [1.8902, 2.4567],
         [1.8280, 1.8631],
