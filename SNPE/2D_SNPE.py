@@ -1,5 +1,4 @@
 import torch
-import numpy as np
 import matplotlib.pyplot as plt
 from sbi import utils as utils
 from sbi import analysis as analysis
@@ -16,11 +15,11 @@ from SNPE_vars import *
 ### If hard_mode is true, the mock observation will 
 ### be one that base SNPE w/ MAF struggled to
 ### identify as a Gaussian.
-hard_mode = False 
+hard_mode = True 
 
 ### The filepath determines where the resulting
 ### pairplots will be generated and named.
-filepath = 'Random_Obs_Results/6NSFGaussian.png'
+filepath = 'SNPE/MAF_200Big/5.png'
 
 ### Defining our Prior
 ### This default prior is a uniform distribution, with the 
@@ -80,7 +79,7 @@ simulator, prior = prepare_for_sbi(simulator, prior)
 ##########################################################################################
 
 ### Defines our inference object, which represents the neural network.
-inference = SNPE(prior=prior,density_estimator='nsf')
+inference = SNPE(prior=prior)
 
 ### Creates a list to hold each posterior the neural net generates
 ### and defines are first proposal for the distribution as the prior.
@@ -94,7 +93,7 @@ proposal = prior
 for _ in range(n_runs):
     #Uses our simulator to generate a number (sim_count) of mock observations across our
     #proposed parameter space.
-    theta, x = simulate_for_sbi(simulator, proposal, num_simulations= sim_count,num_workers=2) 
+    theta, x = simulate_for_sbi(simulator, proposal, num_simulations= sim_count,num_workers=4) 
     
     #Adds the simulated data to the inference object and trains the neural net on it.
     density_estimator = inference.append_simulations(theta, x, proposal=proposal).train() 
