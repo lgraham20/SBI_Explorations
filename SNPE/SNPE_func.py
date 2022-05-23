@@ -26,10 +26,10 @@ def pairplot_comp(post,obs,ns):
     ### m defins a Gaussian random generator from Torch
     ### based on our observed mean + covariance
     m = MultivariateNormal(obs_mu,cov)
-    bsamps = torch.ones(ns,2)
+    bsamps = torch.ones(50000,2)
     ### Pulling ns random points from the Bayesian guess, 
     ### converted to Numpy for same reason above.
-    for el in range(ns):
+    for el in range(50000):
         bsamps[el] = m.sample()
     bsamps = np.array(bsamps)
     c = ChainConsumer()
