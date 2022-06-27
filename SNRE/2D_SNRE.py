@@ -18,7 +18,7 @@ hard_mode = False
 
 ### The filepath determines where the resulting
 ### pairplots will be generated and named.
-filepath = 'SNRE_Randoms/4SNREGaussian.png'
+filepath = '3resnet_500Big.png'
 
 ### Defining our Prior
 ### This default prior is a uniform distribution, with the 
@@ -106,5 +106,5 @@ for _ in range(n_runs):
     #Then, loop repeats with the narrowed parameter space.
     print('Finished run ' + str(_ + 1) + '!')
 
-fig = plot_chains(pdims = dimens_plot,posts = posteriors,obsv = observation,samps = 10000)
+fig = plot_chains(pdims = dimens_plot,posts = posteriors,obsv = observation,samps = sample_count)
 plt.savefig(filepath)  

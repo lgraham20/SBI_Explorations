@@ -1,10 +1,8 @@
-from SNPE_vars import *
+from SNRE_var import *
 import numpy as np
 from chainconsumer import ChainConsumer
 from torch.distributions.multivariate_normal import MultivariateNormal
 import matplotlib.pyplot as plt
-
-from SNRED2_SBIvars import worker_num
 #######################################################################
 #Here I'm defining the pair plot maker, creates a chain               #
 #of classic Bayesian analysis vs. SBI analysis given an SBI posterior,#
@@ -19,7 +17,8 @@ def pairplot_comp(post,obs,ns):
     ### Generates the SBI sample data from the posterior distribution.
     ### The specific chain consumer function used has problems with 
     ### torch, so it has to be converted into a numpy array.
-    sbi_data = np.array(post.sample((ns,), x=obs_mu, num_workers=worker_num))
+    print(type(post))
+    sbi_data = np.array(post.sample((ns,), x=obs_mu,num_workers=work_num))
 
     ### Generating the Bayesian pairplot samples
     ### Covariance matrix based on data

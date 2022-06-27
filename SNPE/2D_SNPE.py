@@ -112,5 +112,5 @@ for _ in range(n_runs):
 ### In the resulting plot, the green static pairplot is the Bayesian approximation,
 ### while the blue evolving plot is the SBI approximation. Usually it converges somewhat
 ### towards the Bayesian. 
-fig = plot_chains(pdims = dimens_plot,posts = posteriors,obsv = observation,samps = 10000)
+fig = plot_chains(pdims = dimens_plot,posts = posteriors,obsv = observation,samps = sample_count)
 plt.savefig(filepath)  

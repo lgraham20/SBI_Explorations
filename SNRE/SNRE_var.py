@@ -9,9 +9,11 @@ n_obs = 10 #The number of observations
 num_dim = 2 #Number of variables
 low = -5 #High/low bound on variables
 high = 5
-n_runs = 2 #Number of multi-round inference roudns
-dimens_plot = (1,2) #Must multiply to equal n_runs
-sim_count = 200
+n_runs = 5 #Number of multi-round inference roudns
+dimens_plot = (1,5) #Must multiply to equal n_runs
+sim_count = 500
+sample_count = 2000
+work_num = 4 #Number of workers for MCMC sample selection
 
 ### Defining plotting varialbes
 ### SNRE produces density ratios instead of a 

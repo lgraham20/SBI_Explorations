@@ -12,6 +12,8 @@ high = 5
 n_runs = 5 #Number of multi-round inference roudns
 dimens_plot = [1,5] #Must multiply to equal n_runs
 sim_count = 200
+sample_count = 10000
+
 if dimens_plot[0]*dimens_plot[1] != n_runs:
     raise ValueError("Dimensions of plot don't multiply to n_runs.")
 ####################################################################
