@@ -20,7 +20,7 @@ hard_mode = False
 
 ### The filepath determines where the resulting
 ### pairplots will be generated and named.
-filepath = 'Random_Obs_Results/6NSFGaussian.png'
+filepath = 'Outputs/SNPE_Trials/MDN/1000/1_1000_Big.png'
 
 ### Defining our Prior
 ### This default prior is a uniform distribution, with the 
@@ -80,7 +80,7 @@ simulator, prior = prepare_for_sbi(simulator, prior)
 ##########################################################################################
 
 ### Defines our inference object, which represents the neural network.
-inference = SNPE(prior=prior,density_estimator='nsf')
+inference = SNPE(prior=prior,density_estimator='mdn')
 
 ### Creates a list to hold each posterior the neural net generates
 ### and defines are first proposal for the distribution as the prior.
@@ -92,6 +92,7 @@ proposal = prior
 ### then it is fed the observation which it uses to narrow the parameter space and focus in on the area
 ### closest to our observation.
 for _ in range(n_runs):
+    print('\nBeginning run ' + str(_) + '\n')
     #Uses our simulator to generate a number (sim_count) of mock observations across our
     #proposed parameter space.
     theta, x = simulate_for_sbi(simulator, proposal, num_simulations= sim_count,num_workers=2) 

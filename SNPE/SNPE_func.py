@@ -18,7 +18,7 @@ def pairplot_comp(post,obs,ns):
     ### Generates the SBI sample data from the posterior distribution.
     ### The specific chain consumer function used has problems with 
     ### torch, so it has to be converted into a numpy array.
-    sbi_data = np.array(post.sample((ns,), x=obs_mu,num_workers=2))
+    sbi_data = np.array(post.sample((ns,), x=obs_mu))
 
     ### Generating the Bayesian pairplot samples
     ### Covariance matrix based on data
